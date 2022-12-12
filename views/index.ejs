@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="ko" class="light-style">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <title>GA 포털 통합관리자</title>
+  <%- include layout/head.ejs %>
+</head>
+<body>
+  <div class="page-loader">
+    <div class="bg-primary"></div>
+  </div>
+  
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-1">
+    <!-- Layout inner -->
+    <div class="layout-inner">
+
+      <%- include layout/navbar_header.ejs %>
+
+      <div class="layout-container">
+
+        <%- include layout/navbar_side.ejs %>
+
+        <div class="layout-content">
+
+          <%- include('pages/'+req.url) %>
+
+          <%- include layout/footer.ejs %>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Layout inner -->
+
+    <div class="layout-overlay layout-sidenav-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+  <!-- Core scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/assets/vendor/libs/popper/popper.js"></script>
+  <script src="/assets/vendor/js/bootstrap.js"></script>
+  <script src="/assets/vendor/js/sidenav.js"></script>
+
+  <!-- Libs -->
+  <script src="/assets/vendor/libs/quill/quill.js"></script>
+  <script src="/assets/vendor/libs/moment/moment.js"></script>
+  <script src="/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+  <!-- `perfect-scrollbar` library required by SideNav plugin -->
+  <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+  <!-- Main script -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/<%= req.url %>.js"></script>
+
+</body>
+</html>
