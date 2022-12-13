@@ -1,0 +1,12 @@
+{
+    "blog": {
+        "upload_path" : "/Users/youngchulnoh/Documents/workspace/ga_potal/uploads"
+    },
+    "postgresql": {
+        "host": "192.168.10.33",
+        "port": 5432,
+        "user" : "local",
+        "password": "12341234",
+        "database": "dblgap"
+    }
+}
