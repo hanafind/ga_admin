@@ -3,9 +3,8 @@ const router = express.Router();
 
 const controllers = require('../controllers');
 
-router.get('/', async (req, res, next) => {
-    
-    res.send('ㅎㅎㅎㅎㅎ')
+router.get('/categories', async (req, res, next) => {
+    await controllers.blogs.getCategories(req, res);
 });
 
 module.exports = router;

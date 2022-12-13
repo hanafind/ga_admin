@@ -8,7 +8,6 @@ const query = async(sql, values)=>{
     const res = await client.query(sql, values);
     await client.end();
     return res.rows;
-
 };
 
 module.exports = {
