@@ -1,13 +1,11 @@
 const modules = require('../../modules');
+const services = require('../services');
 
-const controller = {};
+const controllers = {};
 
-controller.getContentsList = async (req, res) => {
-    //modules.response.success(res, {});
+controllers.getCategories = async (req, res) => {
+    let data = await services.blogs.getCategories(req, res);
+    modules.json_response.success(res, data);
 };
 
-controller.getCategories = async (req, res) => {
-    await modules.json_response(res, {});
-};
-
-module.exports = controller;
+module.exports = controllers;

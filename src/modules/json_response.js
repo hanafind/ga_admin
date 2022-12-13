@@ -2,7 +2,10 @@ const success = (res, obj) => {
     res.status(200).json(obj);
 }
 
-const error = async(res, obj) => {
+const error = async(res, obj, err) => {
+    if(process.env.NODE_ENV !== 'production'){
+        console.log(err);
+    }
     let errorInfo = await errorCodeHandler(obj.code);
     /*
     if(obj.innerError){
