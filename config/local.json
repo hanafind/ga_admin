@@ -8,5 +8,8 @@
         "user" : "local",
         "password": "12341234",
         "database": "dblgap"
+    },
+    "test": {
+
     }
 }
