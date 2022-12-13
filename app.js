@@ -4,8 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-var swaggerJsdoc = require("swagger-jsdoc");
-var swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const indexRouter = require('./src/routes/index');
 const adminRouter = require('./src/routes/admin');

@@ -12,5 +12,5 @@ $(function(){
       });
       $('#datepicker-base, #publish-date').datepicker({
       });
-
+      
 });
