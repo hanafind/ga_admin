@@ -43,7 +43,14 @@
                       </div>
                       <div class="form-group">
                           <div class="text-light small font-weight-semibold mb-3">커버 이미지</div>
-                          <input type="file">
+                          <div class="row">
+                            <div class="col">
+                              <div id="cover_image_upload" class="dropzone"></div>
+                            </div>
+                            <div class="col">
+                              <img id="cover_image" src="" />
+                            </div>
+                          </div>
                           <small class="form-text text-muted">.</small>
                       </div>
                       <div class="form-group">
@@ -100,7 +107,7 @@
                       </div>
                       <div class="form-group">
                         <div class="text-light small font-weight-semibold mb-3">본문 이미지</div>
-                        <input type="file">
+                        <div id="contetns_image" class="dropzone"></div>
                         <small class="form-text text-muted">본문에 이미지를 자동으로 삽입합니다.</small>
                       </div>
                     </form>

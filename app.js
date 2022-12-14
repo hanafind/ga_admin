@@ -11,6 +11,8 @@ const indexRouter = require('./src/routes/index');
 const adminRouter = require('./src/routes/admin');
 const apiRouter = require('./src/api/routes');
 
+const config = require(`./config/${process.env.NODE_ENV}.json`);
+
 const app = express();
 
 // view engine setup
@@ -23,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/uploads', express.static(config.blog.upload_path));
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);

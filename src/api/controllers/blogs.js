@@ -8,4 +8,9 @@ controllers.getCategories = async (req, res) => {
     modules.json_response.success(res, data);
 };
 
+controllers.uploadAttachFiles = async (req, res) => {
+    let data = await services.blogs.uploadAttachFiles(req, res);
+    modules.json_response.success(res, data);
+};
+
 module.exports = controllers;
