@@ -24,8 +24,9 @@ router.get('/categories', async (req, res, next) => {
     await controllers.blogs.getCategories(req, res);
 });
 
-router.post('/posting', async (req, res, next) => {
-    //await controllers.blogs.getCategories(req, res);
+//글작성
+router.post('/post', async (req, res, next) => {
+    await controllers.blogs.setPost(req, res);
 });
 
 const upload = multer({

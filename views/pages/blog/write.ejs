@@ -1,5 +1,7 @@
 <!-- Page content -->
 <div class="container-fluid flex-grow-1 container-p-y">
+    <!--커버 이미지-->
+    <input type="hidden" id="cover_image_url" value=""/>
     <h4 class="font-weight-bold py-3 mb-4">
         <span class="text-muted font-weight-light">하나공감 /</span> 컨텐츠 작성
     </h4>
@@ -19,91 +21,30 @@
                   <div class="card-body">
                     <form id="form_post" method="post" enctype="multipart/form-data">
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">카테고리</div>
-                          <div>
-                              <label class="form-check form-check-inline">
-                                <input name="category" class="form-check-input" type="checkbox" value="option1">
-                                <span class="form-check-label">
-                                  보험
-                                </span>
-                              </label>
-                              <label class="form-check form-check-inline">
-                                <input name="category" class="form-check-input" type="checkbox" value="option2">
-                                <span class="form-check-label">
-                                  금융
-                                </span>
-                              </label>
-                              <label class="form-check form-check-inline">
-                                <input name="category" class="form-check-input" type="checkbox" value="option3">
-                                <span class="form-check-label">
-                                  라이프
-                                </span>
-                              </label>
+                          <div class="text-light small font-weight-semibold mb-3">카테고리 <code>*</code></div>
+                          <div class="category-area">
+                              
                           </div>
                       </div>
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">커버 이미지</div>
+                          <div class="text-light small font-weight-semibold mb-3">커버 이미지 <code>*</code></div>
                           <div class="row">
                             <div class="col">
                               <div id="cover_image_upload" class="dropzone"></div>
                             </div>
                             <div class="col">
-                              <img id="cover_image" src="" />
+                              <img id="cover_image" src="" style="height: 200px;" />
                             </div>
                           </div>
                           <small class="form-text text-muted">.</small>
                       </div>
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">제목</div>
-                        <input type="text" class="form-control" placeholder="제목을 입력하세요.">
+                          <div class="text-light small font-weight-semibold mb-3">제목 <code>*</code></div>
+                        <input type="text" id="post_title" class="form-control" placeholder="제목을 입력하세요.">
                       </div>
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">내용</div>
-                          <div id="quill-toolbar">
-                            <span class="ql-formats">
-                              <select class="ql-font"></select>
-                              <select class="ql-size"></select>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-bold"></button>
-                              <button class="ql-italic"></button>
-                              <button class="ql-underline"></button>
-                              <button class="ql-strike"></button>
-                            </span>
-                            <span class="ql-formats">
-                              <select class="ql-color"></select>
-                              <select class="ql-background"></select>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-script" value="sub"></button>
-                              <button class="ql-script" value="super"></button>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-header" value="1"></button>
-                              <button class="ql-header" value="2"></button>
-                              <button class="ql-blockquote"></button>
-                              <button class="ql-code-block"></button>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-list" value="ordered"></button>
-                              <button class="ql-list" value="bullet"></button>
-                              <button class="ql-indent" value="-1"></button>
-                              <button class="ql-indent" value="+1"></button>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-direction" value="rtl"></button>
-                              <select class="ql-align"></select>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-link"></button>
-                              <button class="ql-image"></button>
-                              <button class="ql-video"></button>
-                            </span>
-                            <span class="ql-formats">
-                              <button class="ql-clean"></button>
-                            </span>
-                          </div>
-                          <div id="quill-editor"></div>
+                          <div class="text-light small font-weight-semibold mb-3">내용 <code>*</code></div>
+                          <textarea id="html_editor"></textarea>
                       </div>
                       <div class="form-group">
                         <div class="text-light small font-weight-semibold mb-3">본문 이미지</div>
@@ -118,13 +59,22 @@
 
           <div class="col-md-4">
               <div class="card mb-4">
-                  <h6 class="card-header">설정</h6>
+                  <h6 class="card-header">기본 설정</h6>
                   <div class="card-body">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col mb-6">
+                            <div class="text-light small font-weight-semibold mb-3">URL 슬러그 <code>*</code></div>
+                            <input type="text" class="form-control" id="url_slug" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    
                       <div class="row">
                         <div class="col mb-6">
                               <div class="text-light small font-weight-semibold mb-3">노출설정</div>
                               <label class="switcher">
-                                  <input type="checkbox" class="switcher-input">
+                                  <input id="post_visible" type="checkbox" class="switcher-input">
                                   <span class="switcher-indicator">
                                   <span class="switcher-yes"></span>
                                   <span class="switcher-no"></span>
@@ -132,8 +82,8 @@
                               </label>
                         </div>
                         <div class="col mb-6">
-                              <div class="text-light small font-weight-semibold mb-3">발행일</div>
-                              <input type="text" class="form-control" id="publish-date">
+                              <div class="text-light small font-weight-semibold mb-3">발행일 <code>*</code></div>
+                              <input type="text" class="form-control" id="posting_date">
                         </div>
                       </div>
                   </div>
@@ -144,15 +94,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">Title</div>
-                            <input type="text" class="form-control" placeholder="제목을 입력하세요.">
+                            <input id="meta_title" type="text" class="form-control" placeholder="제목을 입력하세요.">
                         </div>
                         <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">Description</div>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea id="meta_desc" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">Keyword</div>
-                            <input type="text" class="form-control" placeholder="키워드를 입력하세요.">
+                            <input id="meta_keyword" type="text" class="form-control" placeholder="키워드를 입력하세요.">
                         </div>
                     </div>
 
@@ -161,27 +111,49 @@
                     </h6>
                     <div class="card-body">
                         <div class="form-group">
+                          <div class="text-light small font-weight-semibold mb-3">심사필 노출</div>
+                          <label class="switcher">
+                            <input id="is_audit" type="checkbox" class="switcher-input">
+                            <span class="switcher-indicator">
+                            <span class="switcher-yes"></span>
+                            <span class="switcher-no"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">심사필 번호</div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="년">
+                                    <select id="audit_year" class="form-control"></select>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="월">
+                                    <select id="audit_month" class="form-control">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                      <option value="10">10</option>
+                                      <option value="11">11</option>
+                                      <option value="12">12</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="번호">
+                                    <input id="audit_index" type="text" class="form-control" placeholder="번호">
                                 </div>
                             </div>
-                            
                         </div>
                         <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">부여일</div>
-                            <input type="text" class="form-control" id="datepicker-base">
+                            <input type="text" class="form-control" id="audit_start">
                         </div>
                         <div class="form-group">
                             <div class="text-light small font-weight-semibold mb-3">만료일</div>
-                            <input type="text" class="form-control" placeholder="" disabled>
+                            <input type="text" class="form-control" placeholder="" disabled  id="audit_end">
                         </div>
                     </div>
               </div>
