@@ -7,7 +7,9 @@ var requestAPI = function(obj){
         timeout: 1000,
     })
     .then(function (response) {
-        loading.hide();
+        setTimeout(function() {
+            loading.hide();
+        }, 200);
         console.log(response);
         if(response.status!==200){
             alert('서버와 통신중 에러가 발생하였습니다.');
@@ -20,7 +22,17 @@ var requestAPI = function(obj){
 var loading = {
     show : function(){
         $.blockUI({
-            message: '<div class="sk-fold sk-primary mx-auto mb-4"><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div></div><h5 class="text-body">LOADING...</h5>',
+            //message: '<div class="sk-fold sk-primary mx-auto mb-4"><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div><div class="sk-fold-cube"></div></div><h5 class="text-body">LOADING...</h5>',
+            message: `
+            <div class="sk-wave sk-primary mx-auto mb-4">
+                <div class="sk-wave-rect"></div>
+                <div class="sk-wave-rect"></div>
+                <div class="sk-wave-rect"></div>
+                <div class="sk-wave-rect"></div>
+                <div class="sk-wave-rect"></div>
+            </div>
+            <h5 class="text-body" style="color:#fff !important">loading...</h5>
+            `,
             css: {
               backgroundColor: 'transparent',
               border: '0',

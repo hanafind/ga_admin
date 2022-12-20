@@ -18,6 +18,16 @@ module.exports = async (req, res)=>{
         let audit_grant_end_date = req.body.audit_grant_end_date;
         let posting_date = req.body.posting_date;
         let is_audit = req.body.is_audit;
+        let url_slug = req.body.url_slug;
+
+        if(!audit_grant_start_date){
+            audit_grant_start_date = null;
+        }
+
+        if(!audit_grant_end_date){
+            audit_grant_end_date = null;
+        }
+
         console.log(req.body);
         req.sql = {};
         req.sql.values = [
@@ -35,7 +45,8 @@ module.exports = async (req, res)=>{
             audit_grant_start_date,//12
             audit_grant_end_date,//13
             posting_date,//14
-            is_audit//15
+            is_audit,//15
+            url_slug//16
         ];
         return await db.blogs.setPost(req, res);
     } catch(err){

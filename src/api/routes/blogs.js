@@ -20,6 +20,7 @@ const modules = require('../../modules');
 *       "200":
 *         description:
 */
+//카테고리 조회
 router.get('/categories', async (req, res, next) => {
     await controllers.blogs.getCategories(req, res);
 });
@@ -54,8 +55,56 @@ const upload = multer({
     }),
 });
 
+//파일 첨부
 router.post('/attach', upload.single('file'), async (req, res, next) => {
   await controllers.blogs.uploadAttachFiles(req, res);
+});
+
+/**
+* @swagger
+* paths:
+*  /api/blogs/posts:
+*   get:
+*     tags: [Blogs]
+*     summary: 글 조회
+*     parameters:
+*       - in : query
+*         name: category_idx
+*         required: false
+*         schema:
+*           type: integer
+*         description: 카테고리 고유번호
+*       - in : query
+*         name: is_visible
+*         required: false
+*         schema:
+*           type: boolean
+*         description: true=노출, false=비노출
+*       - in : query
+*         name: keyword
+*         required: false
+*         schema:
+*           type: string
+*         description: 검색어
+*       - in : query
+*         name: page
+*         required: true
+*         schema:
+*           type: integer
+*         description: 페이지 번호 1++
+*       - in : query
+*         name: row
+*         required: true
+*         schema:
+*           type: integer
+*         description: 글 갯수
+*     responses:
+*       "200":
+*         description:
+*/
+//글 조회
+router.get('/posts', async (req, res, next) => {
+  await controllers.blogs.getPosts(req, res);
 });
 
 

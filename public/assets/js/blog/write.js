@@ -4,11 +4,11 @@ $(function(){
       tinymce.init({
         selector: 'textarea#html_editor',
         plugins: [
-        'advlist','autolink',
+        'codeeditor', 'advlist','autolink',
         'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
         'fullscreen','insertdatetime','media','table','help','wordcount'
         ],
-        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+        toolbar: 'codeeditor | undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
         'bullist numlist checklist outdent indent | removeformat | code table help'
       });
       
@@ -88,8 +88,9 @@ $(function(){
         addRemoveLinks:  true,
         complete: (res)=>{
           res = JSON.parse(res.xhr.response)[0];
-          let html = `<p><img src="${res.file_path}${res.file_name}" /></p>`;
-          $('.ql-editor').append(html);
+          let html = tinymce.activeEditor.getContent();
+          html  += `<p><img src="${res.file_path}${res.file_name}" /></p>`;
+          tinymce.activeEditor.setContent(html);
         }
       });
 
@@ -124,6 +125,7 @@ $(function(){
           cover_image_url: $('#cover_image_url').val(),
           posting_date: $('#posting_date').val(),
           is_audit: $('#is_audit').is(':checked'),
+          url_slug: $('#url_slug').val()
         };
 
         requestAPI({

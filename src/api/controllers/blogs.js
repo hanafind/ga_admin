@@ -15,6 +15,13 @@ controllers.uploadAttachFiles = async (req, res) => {
 
 controllers.setPost = async (req, res) => {
     let data = await services.blogs.setPost(req, res);
+    req.body.post_idx = data[0].idx;
+    data = await services.blogs.setCategoryMap(req, res);
+    modules.json_response.success(res, data);
+};
+
+controllers.getPosts = async (req, res) => {
+    let data = await services.blogs.getPosts(req, res);
     modules.json_response.success(res, data);
 };
 
