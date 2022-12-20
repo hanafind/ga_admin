@@ -6,8 +6,6 @@ module.exports = async (req, res)=>{
         req.sql = {};
         req.sql.query = {};
 
-        console.log(req.query)
-
         let category_idx = req.query.category_idx;
         let is_visible = req.query.is_visible;
         let keyword = req.query.keyword;
@@ -35,16 +33,13 @@ module.exports = async (req, res)=>{
         }
 
         req.sql.values = [
-            row,//1
-            page,//2
-            //category_idx,//1
-            //is_visible,//2
-            //keyword,//3
-            //parseInt(page),//4
-            //parseInt(row)//5
+            row,
+            (page<1?0:row*page),
         ];
-        
-        return await db.blogs.getPosts(req, res);
+        let totalCount = await db.blogs.getPostsTotalCount(req, res);
+        let data = await db.blogs.getPosts(req, res);
+        console.log(totalCount)
+        return {total_count: totalCount[0].total_count, data: data};
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
         return;

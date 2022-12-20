@@ -4,6 +4,7 @@ var requestAPI = function(obj){
         method: (obj.method===undefined ? 'get' : obj.method),
         url: obj.url,
         data: obj.data,
+        params: obj.params,
         timeout: 1000,
     })
     .then(function (response) {
