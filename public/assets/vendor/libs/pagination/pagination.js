@@ -48,10 +48,11 @@
           if (self.callHook('beforeInit') === false) return;
   
           // Pagination has been initialized, destroy it
+          /*
           if (container.data('pagination').initialized) {
             $('.paginationjs', container).remove();
           }
-  
+  */
           // Whether to disable Pagination at the initialization
           self.disabled = !!attributes.disabled;
   

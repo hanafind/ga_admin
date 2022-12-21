@@ -1,51 +1,42 @@
 let posts_page = 1;
 let posts_row = 5;
 
-document.addEventListener("DOMContentLoaded", function(){
-    init();   
+$(document).ready(function(){
+    init();
+
+    $('#btn_search').off('click').on('click', function(){
+        getPosts(1);
+    });
+
+    $('#keyword').off('keydown').on('keydown', function(e){
+        if(e.keyCode==13 || e.code=='Enter'){
+            getPosts(1);
+        }
+    });
+
+
+    //카테고리 설정
+    requestAPI({
+        method: 'get',
+        url: '/api/blogs/categories',
+        callback: (data)=>{
+          var html = '';
+          for(var i=0;i<data.length;i++){
+            html += `
+            <option value="${data[i].idx}">${data[i].name_ko}</option>
+            `;
+          }
+          $('#category_idx').append(html);
+        }
+      });
 });
 
 let init = ()=>{
     getPosts(1);
 };
 
-let getPosts = (page)=>{
-    posts_page = page;
-    //글 검색
-    requestAPI({
-        method: 'get',
-        url: '/api/blogs/posts',
-        params: {
-            page: page,
-            row: posts_row
-        },
-        callback: (data)=>{
-            setPosts(data);
-        }
-    });
-};
-
-$('#board-paging').pagination({
-    dataSource: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?',
-    locator: 'items',
-    totalNumberLocator: function(response) {
-        // you can return totalNumber by analyzing response content
-        return Math.floor(Math.random() * (1000 - 100)) + 100;
-    },
-    pageSize: 20,
-    ajax: {
-        beforeSend: function() {
-            dataContainer.html('Loading data from flickr.com ...');
-        }
-    },
-    callback: function(data, pagination) {
-        // template method of yourself
-        var html = template(data);
-        dataContainer.html(html);
-    }
-})
-
 let setPosts = (data)=>{
+    let total_count = data.total_count;
     data = data.data;
     var html = '';
     for(var i=0;i<data.length;i++){
@@ -64,4 +55,37 @@ let setPosts = (data)=>{
         `;
     }
     $('#posts_tb tbody').empty().append(html);
+
+    console.log(total_count +''+ data.length)
+    $('.pagination-container').empty().pagination({
+        items: total_count,
+        itemsOnPage: posts_row,
+        useAnchors : false,
+        displayedPages : 5,
+        currentPage : posts_page,
+        cssStyle: 'light-theme',
+        onPageClick :  function(pageNumber, event){
+          console.log(pageNumber);
+          getPosts(pageNumber);
+        }
+    });
+};
+
+let getPosts = (page)=>{
+    posts_page = page;
+    //글 검색
+    requestAPI({
+        method: 'get',
+        url: '/api/blogs/posts',
+        params: {
+            page: posts_page,
+            row: posts_row,
+            category_idx: $('#category_idx').val(),
+            is_visible: $('#is_visible').val(),
+            keyword: $('#keyword').val(),
+        },
+        callback: (data)=>{
+            setPosts(data);
+        }
+    });
 };

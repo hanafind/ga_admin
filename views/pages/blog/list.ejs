@@ -6,20 +6,17 @@
     <div class="card mb-4">
         <div class="card-body">
             <div class="input-group mb-4">
-                <select class="custom-select">
-                  <option>카테고리</option>
-                  <option>보험</option>
-                  <option>금융</option>
-                  <option>러아프</option>
+                <select id="category_idx" class="custom-select">
+                  <option value="">카테고리</option>
                 </select>
-                <select class="custom-select">
-                    <option>공개 여부</option>
-                    <option>공개</option>
-                    <option>비공개</option>
+                <select id="is_visible" class="custom-select">
+                    <option value="">공개 여부</option>
+                    <option value="true">공개</option>
+                    <option value="false">비공개</option>
                 </select>
-                <input type="text" class="form-control" placeholder="검색어를 입력해 주세요.">
+                <input id="keyword" type="text" class="form-control" placeholder="검색어를 입력해 주세요.">
                 <span class="input-group-append">
-                  <button class="btn btn-secondary" type="button">검색</button>
+                  <button id="btn_search" class="btn btn-secondary" type="button">검색</button>
                 </span>
             </div>
             <table id="posts_tb" class="table table-striped">
@@ -36,7 +33,7 @@
                     <th>공개여부</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="data-container">
                   <!--
                   <tr>
                     <th scope="row">31</th>
@@ -52,7 +49,7 @@
                   -->
                 </tbody>
             </table>
-            <div class="board-paging"></div>
+            <div class="pagination-container"></div>
             <!--
             <div class="form-group" style="text-align: center;">
                 <nav style="display: inline-block;">
