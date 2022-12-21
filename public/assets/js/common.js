@@ -1,12 +1,17 @@
 var requestAPI = function(obj){
     loading.show();
-    axios({
+    let config = {
         method: (obj.method===undefined ? 'get' : obj.method),
         url: obj.url,
         data: obj.data,
         params: obj.params,
         timeout: 1000,
-    })
+    };
+    if(obj.json){
+        config.headers =  {"Content-Type" : "application/json; charset=utf-8"};
+        config.data = JSON.stringify(obj.data);
+    }
+    axios(config)
     .then(function (response) {
         setTimeout(function() {
             loading.hide();

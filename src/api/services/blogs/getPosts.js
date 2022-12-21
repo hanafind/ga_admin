@@ -38,7 +38,7 @@ module.exports = async (req, res)=>{
         ];
         let totalCount = await db.blogs.getPostsTotalCount(req, res);
         let data = await db.blogs.getPosts(req, res);
-        console.log(totalCount)
+        
         return {total_count: totalCount[0].total_count, data: data};
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);

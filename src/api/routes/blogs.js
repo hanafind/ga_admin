@@ -102,9 +102,24 @@ router.post('/attach', upload.single('file'), async (req, res, next) => {
 *       "200":
 *         description:
 */
-//글 조회
+//글 목록 조회
 router.get('/posts', async (req, res, next) => {
   await controllers.blogs.getPosts(req, res);
+});
+
+//글 조회
+router.get('/post/:idx', async (req, res, next) => {
+  await controllers.blogs.getPostByIdx(req, res);
+});
+
+//추천 포스트 설정
+router.post('/recommends', async (req, res, next) => {
+  await controllers.blogs.setRecommendPosts(req, res);
+});
+
+//추천 컨텐츠 조회
+router.get('/recommends', async (req, res, next) => {
+  await controllers.blogs.getRecommendPosts(req, res);
 });
 
 

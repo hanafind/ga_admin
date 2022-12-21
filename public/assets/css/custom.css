@@ -1,0 +1,8 @@
+#recommend_list .card-header{
+    position: relative;
+}
+#recommend_list .card-header button{
+    position: absolute;
+    right: 20px;
+    top: 14px;
+}

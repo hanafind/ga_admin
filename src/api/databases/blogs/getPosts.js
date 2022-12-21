@@ -20,10 +20,8 @@ module.exports = async (req, res)=>{
             LIMIT $1
             OFFSET $2
         `;
-        console.log(req.sql.values)
-        console.log(sql)
-        let result =  await modules.pg.query(sql, req.sql.values)
-        return result;
+
+        return await modules.pg.query(sql, req.sql.values);
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
     }

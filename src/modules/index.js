@@ -3,6 +3,7 @@ const validator = require('./validator');
 const pg = require('./pg');
 const moment = require('./moment');
 const json_response = require('./json_response');
+const pg_format = require('./pg-format')
 
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
     validator: validator,
     pg: pg,
     moment: moment,
-    json_response: json_response
+    json_response: json_response,
+    pg_format: pg_format
 }

@@ -25,4 +25,19 @@ controllers.getPosts = async (req, res) => {
     modules.json_response.success(res, data);
 };
 
+controllers.setRecommendPosts = async (req, res) => {
+    let data = await services.blogs.setRecommendPosts(req, res);
+    modules.json_response.success(res, data);
+};
+
+controllers.getPostByIdx = async (req, res) => {
+    let data = await services.blogs.getPostByIdx(req, res);
+    modules.json_response.success(res, data);
+};
+
+controllers.getRecommendPosts = async (req, res) => {
+    let data = await services.blogs.getRecommendPosts(req, res);
+    modules.json_response.success(res, data);
+};
+
 module.exports = controllers;

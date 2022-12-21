@@ -14,7 +14,6 @@ $(document).ready(function(){
         }
     });
 
-
     //카테고리 설정
     requestAPI({
         method: 'get',
