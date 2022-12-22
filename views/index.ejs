@@ -28,7 +28,7 @@
 
         <div class="layout-content">
 
-          <%- include('pages/'+req.url) %>
+          <%- include('pages'+req._parsedUrl.pathname) %>
 
           <%- include layout/footer.ejs %>
 
@@ -68,6 +68,6 @@
   <!-- Main script -->
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/<%= req.url %>.js"></script>
+  <script src="/assets/js<%= req._parsedUrl.pathname %>.js"></script>
 </body>
 </html>

@@ -44,7 +44,7 @@ let setPosts = (data)=>{
             <th scope="row">31</th>
             <td>${data[i].idx}</td>
             <td>${data[i].name_ko}</td>
-            <td><a href="#">${data[i].title}</a></td>
+            <td><a href="/admin/blog/modify?idx=${data[i].idx}">${data[i].title}</a></td>
             <td>0</td>
             <td>${moment(data[i].created_at).format('YYYY-MM-DD')}</td>
             <td>${moment(data[i].posting_date).format('YYYY-MM-DD')}</td>

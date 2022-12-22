@@ -60,6 +60,7 @@ $(function(){
       //커버 이미지 업로드
       $("div#cover_image_upload").dropzone({
         //autoProcessQueue: false,
+        dictDefaultMessage: '여기로 이미지를 드래그 하거나<br>파일을 업로드 하세요.',
         paramName: 'file',
         url: "/api/blogs/attach?type=cover_image",
         uploadMultiple: false,
@@ -82,6 +83,7 @@ $(function(){
       //칸텐츠 이미지 업로드
       $("div#contetns_image").dropzone({
         //autoProcessQueue: false,
+        dictDefaultMessage: '여기로 이미지를 드래그 하거나<br>파일을 업로드 하세요.',
         paramName: 'file',
         url: "/api/blogs/attach?type=contents_image",
         uploadMultiple: false,
@@ -96,22 +98,10 @@ $(function(){
 
       //글 작성
       $('#btn_submit').off('click').on('click', function(){
-        var post_category_idx = $(":input:radio[name=post_category]:checked").val();
-        if(!post_category_idx){
-          alert('카테고리를 선택해주세요.');
-          return;
-        }
 
-        var post_title = $('#post_title').val();
-        /*
-        if(!post_title){
-          alert('제목을 입력해주세요.');
-          return;
-        }
-        */
-        var data = {
-          post_categories_idx: post_category_idx,
-          title: post_title,
+        let data = {
+          post_categories_idx: $(":input:radio[name=post_category]:checked").val(),
+          title: $('#post_title').val(),
           contents: tinymce.activeEditor.getContent(),
           is_visible: $('#post_visible').is(':checked'),
           meta_title: $('#meta_title').val(),
@@ -127,6 +117,27 @@ $(function(){
           is_audit: $('#is_audit').is(':checked'),
           url_slug: $('#url_slug').val()
         };
+
+        
+        if(!data.post_categories_idx){
+          alert('카테고리를 선택해주세요.');
+          return;
+        }
+
+        if($('#cover_image').attr('src')==''){
+            alert('커버 이미지를 업로드해주세요.');
+            return;
+        }
+        
+        if(!data.title){
+          alert('제목을 입력해주세요.');
+          return;
+        }
+
+        if(!posting_date){
+          alert('발행일을 입력해주세요.');
+          return;
+        }
 
         requestAPI({
           method: 'post',
