@@ -35,6 +35,11 @@ router.put('/post', async (req, res, next) => {
   await controllers.blogs.updatePost(req, res);
 });
 
+//글삭제
+router.delete('/post', async (req, res, next) => {
+  await controllers.blogs.updatePost(req, res);
+});
+
 const upload = multer({
     storage: multer.diskStorage({
       destination: function (req, file, cb) {

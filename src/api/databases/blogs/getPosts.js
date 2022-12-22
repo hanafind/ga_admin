@@ -13,6 +13,7 @@ module.exports = async (req, res)=>{
             WHERE
                 p.idx = pcm.posts_idx
                 AND pc.idx = pcm.post_categories_idx
+                AND p.is_deleted = false
                 ${req.sql.query.category_idx}
                 ${req.sql.query.is_visible}
                 ${req.sql.query.keyword}

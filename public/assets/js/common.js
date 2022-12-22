@@ -1,3 +1,5 @@
+const url = new URL(location.href);
+
 var requestAPI = function(obj){
     loading.show();
     let config = {
@@ -22,6 +24,13 @@ var requestAPI = function(obj){
             return;
         }
         obj.callback(response.data);
+    })
+    .catch(function(err){
+        setTimeout(function() {
+            loading.hide();
+        }, 200);
+        alert('서버와 통신중 에러가 발생하였습니다.');
+        return;
     });
 };
 
@@ -56,23 +65,28 @@ var loading = {
     }
 };
 
-var urlSlug = {
+const urlSlug = {
     set: (str)=>{
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
-  
-    // remove accents, swap ñ for n, etc
-    var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-    var to   = "aaaaeeeeiiiioooouuuunc------";
-    for (var i=0, l=from.length ; i<l ; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+    
+        // remove accents, swap ñ for n, etc
+        var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+        var to   = "aaaaeeeeiiiioooouuuunc------";
+        for (var i=0, l=from.length ; i<l ; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
 
-    str = str.replace(/[^ㄱ-ㅎ가-힣a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
-    
-    return str;
+        str = str.replace(/[^ㄱ-ㅎ가-힣a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+        
+        return str;
     }
-    
 };
+
+(function(){
+    //사이드 메뉴 설정
+    $('#layout-sidenav a[href="'+url.pathname+'"]').parents('.sidenav-item').addClass('open');
+    $('#layout-sidenav a[href="'+url.pathname+'"]').parent('.sidenav-item').addClass('active');
+}());

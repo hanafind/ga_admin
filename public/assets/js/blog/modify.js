@@ -1,4 +1,3 @@
-const url = new URL(location.href);
 const post_idx = url.searchParams.get('idx');
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -183,7 +182,7 @@ let updatePost = ()=>{
         url: '/api/blogs/post',
         data: data,
         callback: (data)=>{
-        //console.log(data);
+            alert('수정이 완료되었습니다.');
         }
     });
 }
