@@ -30,6 +30,11 @@ router.post('/post', async (req, res, next) => {
     await controllers.blogs.setPost(req, res);
 });
 
+//글수정
+router.put('/post', async (req, res, next) => {
+  await controllers.blogs.updatePost(req, res);
+});
+
 const upload = multer({
     storage: multer.diskStorage({
       destination: function (req, file, cb) {

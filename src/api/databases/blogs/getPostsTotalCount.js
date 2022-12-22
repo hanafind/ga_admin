@@ -15,9 +15,7 @@ module.exports = async (req, res)=>{
                 ${req.sql.query.is_visible}
                 ${req.sql.query.keyword}
         `;
-        console.log(sql)
-        let result =  await modules.pg.query(sql, [])
-        return result;
+        return await modules.pg.query(sql, [])
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
     }

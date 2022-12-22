@@ -6,8 +6,7 @@
         <span class="text-muted font-weight-light">하나공감 /</span> 컨텐츠 작성
     </h4>
     <div class="text-right mt-3 mb-3">
-        <button type="button" class="btn btn-default">취소</button>
-        <button type="button" class="btn btn-danger">삭제</button>
+        <button type="button" class="btn btn-default" onclick="javascript:history.back();">취소</button>
         <button id="btn_submit" type="button" class="btn btn-primary">저장</button>
     </div>
     <form>
@@ -124,10 +123,13 @@
                             <div class="text-light small font-weight-semibold mb-3">심사필 번호</div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select id="audit_year" class="form-control"></select>
+                                    <select id="audit_year" class="form-control">
+                                      <option value=""></option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4">
                                     <select id="audit_month" class="form-control">
+                                      <option value=""></option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
                                       <option value="3">3</option>

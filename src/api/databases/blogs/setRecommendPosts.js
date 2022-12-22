@@ -11,9 +11,9 @@ module.exports = async (req, res)=>{
         returning *;
         `, req.sql.values);
         sql = 'truncate table public.post_recommends restart identity;'+sql
-        console.log(sql)
-        let result =  await modules.pg.query(sql, [])
-        return result;
+
+        return await modules.pg.query(sql, [])
+        
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
     }

@@ -40,4 +40,9 @@ controllers.getRecommendPosts = async (req, res) => {
     modules.json_response.success(res, data);
 };
 
+controllers.updatePost = async (req, res) => {
+    let data = await services.blogs.updatePost(req, res);
+    modules.json_response.success(res, data);
+};
+
 module.exports = controllers;

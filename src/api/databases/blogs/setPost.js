@@ -23,8 +23,7 @@ module.exports = async (req, res)=>{
         returning *;
         `;
         
-        let result =  await modules.pg.query(sql, req.sql.values)
-        return result;
+        return await modules.pg.query(sql, req.sql.values)
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
     }

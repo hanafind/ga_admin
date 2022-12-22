@@ -16,7 +16,7 @@ module.exports = async (req, res)=>{
                 AND pc.idx = pcm.post_categories_idx
             ORDER BY pr.order_num ASC
         `;
-        return  await modules.pg.query(sql, [])
+        return await modules.pg.query(sql, [])
     } catch(err){
         modules.json_response.error(res, {code: 500}, err);
     }

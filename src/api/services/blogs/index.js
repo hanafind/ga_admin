@@ -8,5 +8,6 @@ blogs.setCategoryMap = require('./setCategoryMap');
 blogs.setRecommendPosts = require('./setRecommendPosts');
 blogs.getPostByIdx = require('./getPostByIdx');
 blogs.getRecommendPosts = require('./getRecommendPosts');
+blogs.updatePost = require('./updatePost');
 
 module.exports = blogs;
