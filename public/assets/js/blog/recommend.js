@@ -69,8 +69,17 @@ let getRecommendPosts = ()=>{
                 `;
             }
             $('#recommend_list').empty().append(html);
-            $('#btn_delete').off('click').on('click', function(){
-                alert($(this).attr('data-idx'));
+            $('.btn_delete').off('click').on('click', function(){
+                if(!confirm('삭제 하시겠습니까?')){
+                    return;
+                }
+                $(`#recommend_list > div[data-idx="${$(this).attr('data-idx')}"]`).remove();
+                recommendPosts = [];
+                $.each($('#recommend_list > div'), function(index, item){
+                    recommendPosts.push($(this).attr('data-idx'));
+                });
+                setRecommendPosts();
+                getRecommendPosts();
             });
             Sortable.create(document.getElementById('recommend_list'), {
                 animation: 300,
