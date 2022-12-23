@@ -7,5 +7,16 @@ router.use((req, res, next) => {
 })
 
 router.use('/blogs', require('./blogs'));
+router.use('/auths', require('./auths'));
 
+/*
+router.get('/', async (req, res, next) =>{
+  console.log(123123)
+  if(req.session.is_login){
+
+  } else {
+      res.render(`login`, { title: '', req: req });  
+  }
+});
+*/
 module.exports = router;

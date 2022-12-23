@@ -4,6 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const pg = require('pg');
+const expressSession = require('express-session');
+const pgSession = require('connect-pg-simple')(expressSession);
+
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
@@ -15,9 +19,24 @@ const config = require(`./config/${process.env.NODE_ENV}.json`);
 
 const app = express();
 
+const pgPool = new pg.Pool(config.postgresql);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//session
+app.use(expressSession({
+  store: new pgSession({
+    pool : pgPool,                // Connection pool
+    tableName : 'admin_sessions',   // Use another table-name than the default "session" one
+    createTableIfMissing: true
+  }),
+  secret: '1234',
+  resave: false,
+  cookie: { maxAge: 1 * 24 * 60 * 60 * 1000 }, // 1 days
+  saveUninitialized: true
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

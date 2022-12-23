@@ -79,16 +79,16 @@
       <form class="my-5">
         <div class="form-group">
           <label class="form-label">ID</label>
-          <input type="text" class="form-control">
+          <input id="id" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label class="form-label d-flex justify-content-between align-items-end">
             <div>Password</div>
           </label>
-          <input type="password" class="form-control">
+          <input id="password" type="password" class="form-control">
         </div>
         <div class="d-flex justify-content-between align-items-center m-0">
-            <button type="button" class="btn btn-primary">Login</button>
+            <button id="btn_login" type="button" class="btn btn-primary">Login</button>
         </div>
       </form>
       <!-- / Form -->
@@ -104,10 +104,41 @@
   <script src="/assets/vendor/js/sidenav.js"></script>
 
   <!-- Libs -->
-  <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="/assets/vendor/libs/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/libs/moment/moment.js"></script>
+  <script src="/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+  <script src="/assets/vendor/libs/dropzone/dropzone-min.js"></script>
+  <script src="/assets/vendor/libs/axios/axios.min.js"></script>
+  <script src="/assets/vendor/libs/block-ui/block-ui.js"></script>
+  <script src="/assets/vendor/libs/simplePagination/simplePagination.js"></script>
+  <script src="/assets/vendor/libs/sortablejs/sortable.js"></script>
 
-  <!-- Demo -->
-  <script src="/assets/js/demo.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script>
+    $('#btn_login').off('click').on('click', function(){
+      let data = {
+        id: $('#id').val(),
+        password: $('#password').val()
+      };
+      if(!data.id){
+        alert('아이디를 입력하세요.');
+        return;
+      }
+      if(!data.password){
+        alert('패스워드를 입력하세요.');
+        return;
+      }
+      requestAPI({
+        method: 'post',
+        url: '/api/auths/login',
+        data: data,
+        callback: (data)=>{
+            location.href = '/admin/dashboard';
+        }
+      });
+    });
+
+  </script>
 
 </body>
 

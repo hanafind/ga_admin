@@ -10,8 +10,6 @@ module.exports = async (req, res)=>{
             req.sql.values.push([req.body[i], i]);
         }
 
-        console.log(req.sql.values);
-
         let result = await db.blogs.setRecommendPosts(req, res);
         
         return result;

@@ -18,18 +18,24 @@ var requestAPI = function(obj){
         setTimeout(function() {
             loading.hide();
         }, 200);
-        console.log(response);
         if(response.status!==200){
             alert('서버와 통신중 에러가 발생하였습니다.');
             return;
         }
         obj.callback(response.data);
     })
-    .catch(function(err){
+    .catch(function(res){
+        console.log(res)
         setTimeout(function() {
             loading.hide();
         }, 200);
-        alert('서버와 통신중 에러가 발생하였습니다.');
+        let err = res.response.data;
+        let message = `
+            서버와 통신중 에러가 발생하였습니다.
+            ${err.code?err.code:''}
+            ${err.message?err.message:''}
+        `;
+        alert(message);
         return;
     });
 };

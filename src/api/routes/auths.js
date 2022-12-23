@@ -3,8 +3,8 @@ const router = express.Router();
 
 const controllers = require('../controllers');
 
-router.get('/login', async (req, res, next) => {
-    //await controllers.blogs.getCategories(req, res);
+router.post('/login', async (req, res, next) => {
+    await controllers.auths.login(req, res);
 });
 
 module.exports = router;
