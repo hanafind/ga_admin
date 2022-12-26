@@ -9,5 +9,6 @@ blogs.setRecommendPosts = require('./setRecommendPosts');
 blogs.getPostByIdx = require('./getPostByIdx');
 blogs.getRecommendPosts = require('./getRecommendPosts');
 blogs.updatePost = require('./updatePost');
+blogs.deletePost = require('./deletePost');
 
 module.exports = blogs;

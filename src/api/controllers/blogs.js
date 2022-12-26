@@ -45,4 +45,10 @@ controllers.updatePost = async (req, res) => {
     modules.json_response.success(res, data);
 };
 
+
+controllers.deletePost = async (req, res) => {
+    let data = await services.blogs.deletePost(req, res);
+    modules.json_response.success(res, data);
+};
+
 module.exports = controllers;

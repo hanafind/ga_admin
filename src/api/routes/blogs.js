@@ -37,7 +37,7 @@ router.put('/post', async (req, res, next) => {
 
 //글삭제
 router.delete('/post', async (req, res, next) => {
-  await controllers.blogs.updatePost(req, res);
+  await controllers.blogs.deletePost(req, res);
 });
 
 const upload = multer({

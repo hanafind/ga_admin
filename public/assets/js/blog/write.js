@@ -96,6 +96,13 @@ $(function(){
         }
       });
 
+      //글 삭제
+      $('#btn_delete').off('click').on('click', function(){
+        if(confirm('삭제 하시겠습니까?')){
+
+        }
+      });
+
       //글 작성
       $('#btn_submit').off('click').on('click', function(){
 
@@ -144,7 +151,8 @@ $(function(){
           url: '/api/blogs/post',
           data: data,
           callback: (data)=>{
-            //console.log(data);
+            alert('글 작성을 완료하였습니다.');
+            location.href='/admin/blog/list';
           }
         });
       });
