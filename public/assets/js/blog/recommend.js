@@ -59,7 +59,7 @@ let getRecommendPosts = ()=>{
                         <img class="card-img-top" src="${data[i].cover_image_url}" alt="Card image cap">
                         <div class="card-body">
                         <h4 class="card-title">${data[i].title}</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text"></p>
                         </div>
                         <div class="card-footer">
                             <p class="card-text">고유번호 : ${data[i].idx}</p>
