@@ -11,7 +11,8 @@ module.exports = async (req, res)=>{
                 p.meta_keywords, p.created_at, p.posting_date,
                 p.is_audit, p.posting_date, p.url_slug,
                 p.audit_num_year, p.audit_num_month, p.audit_num_index,
-                p.audit_grant_start_date, p.audit_grant_end_date, p.is_visible
+                p.audit_grant_start_date, p.audit_grant_end_date, p.is_visible,
+                p.cover_type, p.cover_video_url
             FROM
                 public.posts as p, public.posts_post_categories_map as pcm, public.post_categories as pc
             WHERE

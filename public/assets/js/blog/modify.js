@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function(){
     //커버 이미지 업로드
     $("div#cover_image_upload").dropzone({
     //autoProcessQueue: false,
-    dictDefaultMessage: '여기로 이미지를 드래그 하거나<br>파일을 업로드 하세요.',
+    dictDefaultMessage: 'Drag and drop files here<br>.jpg, .jpeg, .png',
+    acceptedFiles: '.jpg,.jpeg,.png',
     paramName: 'file',
     url: "/api/blogs/attach?type=cover_image",
     uploadMultiple: false,
@@ -58,10 +59,34 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     });
 
+      //커버 비디오 업로드
+      $("div#cover_video_upload").dropzone({
+        //autoProcessQueue: false,
+        dictDefaultMessage: 'Drag and drop files here<br>.mp4',
+        acceptedFiles: '.mp4',
+        paramName: 'file',
+        url: "/api/blogs/attach?type=cover_video",
+        uploadMultiple: false,
+        init: function() {
+          this.on('addedfile', function(file) {
+            if (this.files.length > 1) {
+              this.removeFile(this.files[0]);
+            }
+          });
+        },
+        complete: (res)=>{
+          res = JSON.parse(res.xhr.response)[0];
+          $('#cover_video').attr('src', res.file_path+res.file_name);
+          $('#cover_video_url').val(res.file_path+res.file_name);
+          //let html = `<p><img src="${res.mobile_path}" /></p><p><img src="${res.original_path}" /></p>`;
+          //$('.ql-editor').append(html);
+        }
+      });
+
       //칸텐츠 이미지 업로드
     $("div#contetns_image").dropzone({
         //autoProcessQueue: false,
-        dictDefaultMessage: '여기로 이미지를 드래그 하거나<br>파일을 업로드 하세요.',
+        dictDefaultMessage: 'Drag and drop files here<br>.jpg, .jpeg, .png',
         paramName: 'file',
         url: "/api/blogs/attach?type=contents_image",
         uploadMultiple: false,
@@ -111,8 +136,11 @@ let getPost = ()=>{
         callback: (data)=>{
             data = data[0];
             $(`input[name='post_category'][value="${data.category_idx}"`).prop("checked", true);
+            $(`input[name='cover_type'][value="${data.cover_type}"`).prop("checked", true);
             $('#cover_image').attr('src', data.cover_image_url);
             $('#cover_image_url').val(data.cover_image_url);
+            $('#cover_video_url').val(data.cover_video_url);
+            $('#cover_video').attr('src', data.cover_video_url);
             $('#post_title').val(data.title);
             setTimeout(function(){
                 tinymce.activeEditor.setContent(data.contents);
@@ -149,7 +177,9 @@ let updatePost = ()=>{
         audit_num_index: $('#audit_index').val(),
         audit_grant_start_date: $('#audit_start').val(),
         audit_grant_end_date: $('#audit_end').val(),
+        cover_type: $(":input:radio[name=cover_type]:checked").val(),
         cover_image_url: $('#cover_image_url').val(),
+        cover_video_url: $('#cover_video_url').val(),
         posting_date: $('#posting_date').val(),
         is_audit: $('#is_audit').is(':checked'),
         url_slug: $('#url_slug').val(),
@@ -166,7 +196,17 @@ let updatePost = ()=>{
         alert('커버 이미지를 업로드해주세요.');
         return;
     }
-    
+
+    if(!data.cover_type){
+        alert('커버 미디어 타입을 선택해주세요.');
+        return;
+    }
+
+    if(data.cover_type=='video'&&!cover_video_url){
+        alert('커버 비디오를 업로드해주세요.');
+        return
+    }
+
     if(!data.title){
         alert('제목을 입력해주세요.');
         return;

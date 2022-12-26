@@ -19,6 +19,8 @@ module.exports = async (req, res)=>{
         let posting_date = req.body.posting_date;
         let is_audit = req.body.is_audit;
         let url_slug = req.body.url_slug;
+        let cover_type = req.body.cover_type;
+        let cover_video_url = req.body.cover_video_url;
 
         if(!audit_grant_start_date){
             audit_grant_start_date = null;
@@ -46,7 +48,9 @@ module.exports = async (req, res)=>{
             audit_grant_end_date,//13
             posting_date,//14
             is_audit,//15
-            url_slug//16
+            url_slug,//16
+            cover_type,//17
+            cover_video_url,//18
         ];
         return await db.blogs.setPost(req, res);
     } catch(err){

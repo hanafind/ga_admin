@@ -2,6 +2,7 @@
 <div class="container-fluid flex-grow-1 container-p-y">
     <!--커버 이미지-->
     <input type="hidden" id="cover_image_url" value=""/>
+    <input type="hidden" id="cover_video_url" value=""/>
     <h4 class="font-weight-bold py-3 mb-4">
         <span class="text-muted font-weight-light">하나공감 /</span> 컨텐츠 수정
     </h4>
@@ -27,6 +28,25 @@
                           </div>
                       </div>
                       <div class="form-group">
+                        <div class="text-light small font-weight-semibold mb-3">커버 미디어<code>*</code></div>
+                        <div class="row">
+                          <div class="col">
+                            <label class="form-check form-check-inline">
+                              <input name="cover_type" class="form-check-input" type="radio" value="image">
+                              <span class="form-check-label">
+                                이미지
+                              </span>
+                            </label>
+                            <label class="form-check form-check-inline">
+                              <input name="cover_type" class="form-check-input" type="radio" value="video">
+                              <span class="form-check-label">
+                                비디오
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
                           <div class="text-light small font-weight-semibold mb-3">커버 이미지 <code>*</code></div>
                           <div class="row">
                             <div class="col">
@@ -34,6 +54,21 @@
                             </div>
                             <div class="col">
                               <img id="cover_image" src="" style="width: 100%;" />
+                            </div>
+                          </div>
+                          <small class="form-text text-muted">.</small>
+                      </div>
+                      <div class="form-group">
+                        <div class="text-light small font-weight-semibold mb-3">커버 비디오</div>
+                          <div class="row">
+                            <div class="col">
+                              <div id="cover_video_upload" class="dropzone">
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div src="" style="width: 100%;">
+                                <video id="cover_video" src="" autoplay muted controls loop width="100%"></video>
+                              </div>
                             </div>
                           </div>
                           <small class="form-text text-muted">.</small>

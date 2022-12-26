@@ -79,7 +79,6 @@ let getRecommendPosts = ()=>{
                     recommendPosts.push($(this).attr('data-idx'));
                 });
                 setRecommendPosts();
-                getRecommendPosts();
             });
             Sortable.create(document.getElementById('recommend_list'), {
                 animation: 300,
@@ -89,7 +88,6 @@ let getRecommendPosts = ()=>{
                         recommendPosts.push($(this).attr('data-idx'));
                     });
                     setRecommendPosts();
-                    getRecommendPosts();
                 }
             });
         }
@@ -104,7 +102,7 @@ let setRecommendPosts = ()=>{
         json: true,
         data: recommendPosts,
         callback: (data)=>{
-
+            getRecommendPosts();
         }
     });
 }
