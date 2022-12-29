@@ -3,7 +3,14 @@ const router = express.Router();
 
 router.use('/', async (req, res, next) =>{
     next();
-    //res.render('login',{})
+});
+
+router.get('/', async (req, res, next) =>{  
+    if(!req.session.is_login){
+        res.redirect('/login');
+    } else {
+        res.redirect('/admin/dashboard');
+    }
 });
 
 router.get('/login', async (req, res, next) =>{

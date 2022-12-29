@@ -97,26 +97,50 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col mb-6">
+                            <div class="text-light small font-weight-semibold mb-3">공개 설정</div>
+                            <label class="switcher">
+                              <input id="post_visible" type="checkbox" class="switcher-input">
+                              <span class="switcher-indicator">
+                              <span class="switcher-yes"></span>
+                              <span class="switcher-no"></span>
+                              </span>
+                            </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col mb-6">
                             <div class="text-light small font-weight-semibold mb-3">URL 슬러그 <code>*</code></div>
                             <input type="text" class="form-control" id="url_slug" disabled>
                         </div>
                       </div>
                     </div>
-                    
                       <div class="row">
                         <div class="col mb-6">
-                              <div class="text-light small font-weight-semibold mb-3">공개 설정</div>
-                              <label class="switcher">
-                                  <input id="post_visible" type="checkbox" class="switcher-input">
-                                  <span class="switcher-indicator">
-                                  <span class="switcher-yes"></span>
-                                  <span class="switcher-no"></span>
-                                  </span>
-                              </label>
+                          <div class="text-light small font-weight-semibold mb-3">발행일시 <code>*</code></div>
+                          <input type="text" class="form-control" id="posting_date">
                         </div>
                         <div class="col mb-6">
-                              <div class="text-light small font-weight-semibold mb-3">발행일 <code>*</code></div>
-                              <input type="text" class="form-control" id="posting_date">
+                          <div class="text-light small font-weight-semibold mb-3">&nbsp;</div>
+                          <div class="row">
+                              <div class="col mb-6">
+                                <select id="posting_hour" class="form-control">
+                                  <option value="">시</option>
+                                  <% for(var i = 0; i < 24; i++){ %>
+                                    <option value="<%= (i<10)? '0'+ i : i %>"><%= (i<10)? '0'+ i : i %></option>
+                                  <% } %>
+                                </select>
+                              </div>
+                              <div class="col mb-6">
+                                <select id="posting_minute" class="form-control">
+                                    <option value="">분</option>
+                                  <% for(var i = 0; i < 60; i++){ %>
+                                    <option value="<%= (i<10)? '0'+ i : i %>"><%= (i<10)? '0'+ i : i %></option>
+                                  <% } %>
+                                </select>
+                              </div>
+                          </div>
                         </div>
                       </div>
                   </div>

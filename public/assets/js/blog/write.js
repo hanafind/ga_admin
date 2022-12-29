@@ -177,10 +177,14 @@ $(function(){
           return;
         }
 
-        if(!posting_date){
-          alert('발행일을 입력해주세요.');
+        let posting_hour = $('#posting_hour').val();
+        let posting_minute = $('#posting_minute').val();
+
+        if(!data.posting_date || !posting_hour || !posting_minute ){
+          alert('발행일을 설정해주세요.');
           return;
         }
+        data.posting_date = data.posting_date+ ' ' + posting_hour+':'+posting_minute;
 
         requestAPI({
           method: 'post',

@@ -148,6 +148,8 @@ let getPost = ()=>{
             $('#url_slug').val(data.url_slug);
             $('#post_visible').prop('checked', data.is_visible);
             $('#posting_date').val(moment(data.posting_date).format('YYYY-MM-DD'));
+            $('#posting_hour').val(moment(data.posting_date).format('HH'));
+            $('#posting_minute').val(moment(data.posting_date).format('mm'));
             $('#meta_title').val(data.meta_title);
             $('#meta_desc').val(data.meta_desc);
             $('#meta_keyword').val(data.meta_keywords);
@@ -212,10 +214,14 @@ let updatePost = ()=>{
         return;
     }
 
-    if(!posting_date){
-        alert('발행일을 입력해주세요.');
-        return;
+    let posting_hour = $('#posting_hour').val();
+    let posting_minute = $('#posting_minute').val();
+
+    if(!data.posting_date || !posting_hour || !posting_minute ){
+      alert('발행일을 설정해주세요.');
+      return;
     }
+    data.posting_date = data.posting_date+ 'T' + posting_hour+':'+posting_minute;
 
     requestAPI({
         method: 'put',
