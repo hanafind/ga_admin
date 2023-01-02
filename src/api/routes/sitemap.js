@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
    
     // register event listeners
     generator.on('done', () => {
-        res.send({});
+        res.end();
     });
     
     // start the crawler
