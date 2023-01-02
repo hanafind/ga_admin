@@ -23,6 +23,10 @@ router.post('/', async (req, res, next) => {
     generator.on('done', () => {
         res.end();
     });
+
+    generator.on('error', (error) => {
+        console.log(error);
+      });
     
     // start the crawler
     generator.start();
