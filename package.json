@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "local": "cross-env NODE_ENV=local PORT=4101 pm2 start ./bin/www --name 'GA_Potal_Admin' --watch",
+    "vultr": "cross-env NODE_ENV=local PORT=4101 pm2 start ./bin/www --name 'GA_Potal_Admin'",
     "development": "cross-env NODE_ENV=development PORT=4101 pm2 start ./bin/www --name 'GA_Potal_Admin'",
     "production": "cross-env NODE_ENV=production PORT=4101 pm2 start ./bin/www --name 'GA_Potal_Admin'"
   },
