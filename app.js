@@ -29,6 +29,7 @@ app.set('view engine', 'ejs');
 app.use(expressSession({
   store: new pgSession({
     pool : pgPool,                // Connection pool
+    schemaName: 'session',
     tableName : 'admin_sessions',   // Use another table-name than the default "session" one
     createTableIfMissing: true
   }),
