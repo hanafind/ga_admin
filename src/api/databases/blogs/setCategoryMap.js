@@ -3,7 +3,7 @@ const modules = require('../../../modules');
 module.exports = async (req, res)=>{
     try{
         let sql = `
-        INSERT INTO public.posts_post_categories_map
+        INSERT INTO blog.posts_post_categories_map
         (
             posts_idx, post_categories_idx, created_at
         )

@@ -7,7 +7,7 @@ auths.login = async(req, res)=>{
         SELECT
             idx, id, password, authorized_level, is_block
         FROM
-            public.administrators
+            session.administrators
         WHERE
             id = $1 AND password = $2
         ;

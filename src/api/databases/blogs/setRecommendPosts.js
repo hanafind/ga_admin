@@ -3,14 +3,14 @@ const modules = require('../../../modules');
 module.exports = async (req, res)=>{
     try{
         let sql = modules.pg_format.format(`
-        INSERT INTO public.post_recommends
+        INSERT INTO blog.post_recommends
         (
             posts_idx, order_num
         )
         VALUES %L
         returning *;
         `, req.sql.values);
-        sql = 'truncate table public.post_recommends restart identity;'+sql
+        sql = 'truncate table blog.post_recommends restart identity;'+sql
 
         return await modules.pg.query(sql, [])
         

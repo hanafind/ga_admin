@@ -14,7 +14,7 @@ module.exports = async (req, res)=>{
                 p.audit_grant_start_date, p.audit_grant_end_date, p.is_visible,
                 p.cover_type, p.cover_video_url
             FROM
-                public.posts as p, public.posts_post_categories_map as pcm, public.post_categories as pc
+            blog.posts as p, blog.posts_post_categories_map as pcm, blog.post_categories as pc
             WHERE
                 p.idx = pcm.posts_idx
                 AND pc.idx = pcm.post_categories_idx

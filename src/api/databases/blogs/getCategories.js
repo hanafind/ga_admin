@@ -4,7 +4,7 @@ module.exports = async (req, res)=>{
     try{
         let sql = `
         SELECT idx, name, name_ko, created_at
-        FROM public.post_categories;
+        FROM blog.post_categories;
         `;
         return await modules.pg.query(sql, []);
     } catch(err){

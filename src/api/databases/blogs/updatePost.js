@@ -3,7 +3,7 @@ const modules = require('../../../modules');
 module.exports = async (req, res)=>{
     try{
         let sql = `
-        UPDATE public.posts
+        UPDATE blog.posts
         SET
             title = $1,
             contents = $2,
