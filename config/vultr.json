@@ -1,0 +1,19 @@
+{
+    "site" : {
+        "name": "GA 포탈",
+        "protocol" : "http",
+        "host": "141.164.57.30",
+        "port":"4101"
+    },
+    "blog": {
+        "name": "하나공감",
+        "upload_path" : "/Users/youngchulnoh/Documents/workspace/ga_potal/uploads"
+    },
+    "postgresql": {
+        "host": "141.164.57.30",
+        "port": 5432,
+        "user" : "local",
+        "password": "12341234",
+        "database": "dblgap"
+    }
+}

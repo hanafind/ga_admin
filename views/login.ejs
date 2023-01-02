@@ -54,6 +54,17 @@
   <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
   <!-- Page -->
   <link rel="stylesheet" href="/assets/vendor/css/pages/authentication.css">
+  <style>
+    .animated-gradient {
+      animation: animateBg 5s linear infinite;
+      background-image: linear-gradient(90deg,#009591,#007573,#004745,#009591,#007573);
+      background-size: 400% 100%;
+    }
+    @keyframes animateBg {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 0%; }
+    }
+  </style>
 </head>
 
 <body>
@@ -63,40 +74,47 @@
 
   <!-- Content -->
 
-  <div class="authentication-wrapper authentication-1 px-4">
-    <div class="authentication-inner py-5">
-      <h4>하나금융파인드 GA 포털 통합관리자</h4>
+  <div class="authentication-wrapper authentication-2 ui-bg-cover ui-bg-overlay-container px-4 animated-gradient">
+    <div class="ui-bg-overlay bg-dark opacity-25"></div>
 
-      <!-- Logo -->
-      <div class="d-flex justify-content-center align-items-center">
-        <div class="ui-w-60">
-            
+    <div class="authentication-inner py-5">
+
+      <div class="card">
+        <div class="p-4 p-sm-5">
+          <!-- Logo -->
+          <div class="d-flex justify-content-center align-items-center pb-2 mb-4">
+            <img src="/assets/logo.png" style="width: 150px" />
+          </div>
+          <!-- / Logo -->
+
+          <h5 class="text-center text-muted font-weight-normal mb-4">GA 포털 통합 관리자</h5>
+
+          <!-- Form -->
+          <form>
+            <div class="form-group">
+              <label class="form-label">ID</label>
+              <input id="id" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label d-flex justify-content-between align-items-end">
+                <div>Password</div>
+              </label>
+              <input id="password" type="password" class="form-control">
+            </div>
+            <div class="d-flex justify-content-between align-items-center m-0">
+              <label class="custom-control custom-checkbox m-0">
+                <input type="checkbox" class="custom-control-input">
+              </label>
+              <button id="btn_login" type="button" class="btn btn-primary">로그인</button>
+            </div>
+          </form>
+          <!-- / Form -->
+
         </div>
       </div>
-      <!-- / Logo -->
-
-      <!-- Form -->
-      <form class="my-5">
-        <div class="form-group">
-          <label class="form-label">ID</label>
-          <input id="id" type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label class="form-label d-flex justify-content-between align-items-end">
-            <div>Password</div>
-          </label>
-          <input id="password" type="password" class="form-control">
-        </div>
-        <div class="d-flex justify-content-between align-items-center m-0">
-            <button id="btn_login" type="button" class="btn btn-primary">Login</button>
-        </div>
-      </form>
-      <!-- / Form -->
 
     </div>
   </div>
-
-  <!-- / Content -->
 
   <!-- Core scripts -->
   <script src="/assets/vendor/libs/popper/popper.js"></script>

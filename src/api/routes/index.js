@@ -8,6 +8,7 @@ router.use((req, res, next) => {
 
 router.use('/blogs', require('./blogs'));
 router.use('/auths', require('./auths'));
+router.use('/sitemap', require('./sitemap'));
 
 /*
 router.get('/', async (req, res, next) =>{
