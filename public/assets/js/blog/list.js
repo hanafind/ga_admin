@@ -41,7 +41,7 @@ let setPosts = (data)=>{
     for(var i=0;i<data.length;i++){
         html += `
         <tr>
-            <th scope="row">31</th>
+            <th scope="row">${total_count-(posts_page-1)*posts_row-i}</th>
             <td>${data[i].idx}</td>
             <td>${data[i].name_ko}</td>
             <td><a href="/admin/blog/modify?idx=${data[i].idx}">${data[i].title}</a></td>
