@@ -21,6 +21,18 @@ module.exports = async (req, res)=>{
         let url_slug = req.body.url_slug;
         let idx = req.body.idx;
         let post_categories_idx = req.body.post_categories_idx;
+        let cover_video_url = req.body.cover_video_url;
+
+        let filePath = cover_image_url.substr(0, cover_image_url.lastIndexOf('/')+1);
+        let fileName = cover_image_url.substring(cover_image_url.lastIndexOf('/')+1, cover_image_url.lastIndexOf('.'));
+        let fileType = cover_image_url.substring(cover_image_url.lastIndexOf('.'), cover_image_url.length);
+
+        let cover_image_urls = {
+            original: cover_image_url,
+            w720: `${filePath}${fileName}-w720${fileType}`,
+            w1440: `${filePath}${fileName}-w1440${fileType}`,
+            w1980: `${filePath}${fileName}-w1980${fileType}`,
+        }
 
         if(!audit_grant_start_date){
             audit_grant_start_date = null;
@@ -48,7 +60,9 @@ module.exports = async (req, res)=>{
             posting_date,//14
             is_audit,//15
             url_slug,//16
-            idx//17
+            cover_video_url, //17
+            cover_image_urls,//18
+            idx//19
         ];
         await db.blogs.updatePost(req, res);
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const multer = require('multer');
+const sharp = require('sharp');
 const fs = require('fs');
 const moment = require('moment');
 
@@ -67,6 +68,17 @@ const upload = multer({
 
 //파일 첨부
 router.post('/attach', upload.single('file'), async (req, res, next) => {
+  let fileName = req.file.filename.substring(0, req.file.filename.lastIndexOf('.'));
+  let fileType = req.file.filename.substring(req.file.filename.lastIndexOf('.'), req.file.filename.length);
+  let resizeWidth = [720, 1440, 1980];
+  console.log()
+  if(req.file.mimetype.indexOf('image')>-1){
+    for(let i=0;i<resizeWidth.length;i++){
+      sharp(req.file.path)
+      .resize(resizeWidth[i])
+      .toFile(req.file.destination+fileName+'-w'+resizeWidth[i]+fileType, (err, info) => {});
+    }
+  }
   await controllers.blogs.uploadAttachFiles(req, res);
 });
 

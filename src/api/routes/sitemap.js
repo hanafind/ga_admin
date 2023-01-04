@@ -6,9 +6,8 @@ const fs = require('fs');
 const SitemapGenerator = require('sitemap-generator');
 
 router.get('/', async (req, res, next) => {
-    const data = fs.readFileSync('./sitemap.xml', 'utf8');
     res.set('Content-Type', 'text/xml');
-    res.send(data);
+    res.send(fs.readFileSync('./sitemap.xml', 'utf8'));
 });
 
 router.post('/', async (req, res, next) => {
@@ -21,15 +20,15 @@ router.post('/', async (req, res, next) => {
    
     // register event listeners
     generator.on('done', () => {
-        res.end();
+        res.end('');
     });
 
     generator.on('error', (error) => {
         console.log(error);
-      });
+    });
     
     // start the crawler
-    generator.start();
+    await generator.start();
 });
 
 module.exports = router;

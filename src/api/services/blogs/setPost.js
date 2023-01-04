@@ -22,6 +22,17 @@ module.exports = async (req, res)=>{
         let cover_type = req.body.cover_type;
         let cover_video_url = req.body.cover_video_url;
 
+        let filePath = cover_image_url.substr(0, cover_image_url.lastIndexOf('/')+1);
+        let fileName = cover_image_url.substring(cover_image_url.lastIndexOf('/')+1, cover_image_url.lastIndexOf('.'));
+        let fileType = cover_image_url.substring(cover_image_url.lastIndexOf('.'), cover_image_url.length);
+
+        let cover_image_urls = {
+            original: cover_image_url,
+            w720: `${filePath}${fileName}-w720${fileType}`,
+            w1440: `${filePath}${fileName}-w1440${fileType}`,
+            w1980: `${filePath}${fileName}-w1980${fileType}`,
+        }
+
         if(!audit_grant_start_date){
             audit_grant_start_date = null;
         }
@@ -30,7 +41,6 @@ module.exports = async (req, res)=>{
             audit_grant_end_date = null;
         }
 
-        console.log(req.body);
         req.sql = {};
         req.sql.values = [
             title,//1
@@ -51,6 +61,7 @@ module.exports = async (req, res)=>{
             url_slug,//16
             cover_type,//17
             cover_video_url,//18
+            cover_image_urls//19
         ];
         return await db.blogs.setPost(req, res);
     } catch(err){

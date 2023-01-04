@@ -11,7 +11,7 @@ module.exports = async (req, res)=>{
             audit_num_month, audit_num_index, audit_grant_start_date,
             audit_grant_end_date, is_deleted, created_at,
             posting_date, is_audit, url_slug,
-            cover_type, cover_video_url
+            cover_type, cover_video_url, cover_image_urls
         )
         VALUES(
             $1, $2, $3,
@@ -20,7 +20,7 @@ module.exports = async (req, res)=>{
             $10, $11, $12,
             $13, false, now(),
             $14, $15, $16,
-            $17, $18
+            $17, $18, $19
         )
         returning *;
         `;

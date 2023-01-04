@@ -21,8 +21,10 @@ module.exports = async (req, res)=>{
             posting_date = $14,
             is_audit = $15,
             url_slug = $16,
+            cover_video_url = $17,
+            cover_image_urls = $18,
             updated_at = now()
-        WHERE idx = $17
+        WHERE idx = $19
         returning *;
         `;
         
