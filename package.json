@@ -9,6 +9,8 @@
     "production": "cross-env NODE_ENV=production PORT=4101 pm2 start ./bin/www --name 'GA_Potal_Admin'"
   },
   "dependencies": {
+    "axios": "^1.2.2",
+    "cheerio": "^1.0.0-rc.12",
     "connect-pg-simple": "^8.0.0",
     "cookie-parser": "~1.4.4",
     "crypto": "^1.0.1",

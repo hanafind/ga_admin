@@ -5,7 +5,7 @@ router.all('*', async (req, res, next) =>{
     if(!req.session.is_login){
         res.redirect('/login');
     } else {
-        res.render('index', { title: '', req : req });
+        res.render('index', { req: req, res: res });
     }
 });
 

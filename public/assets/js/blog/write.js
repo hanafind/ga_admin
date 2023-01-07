@@ -9,12 +9,13 @@ $(function(){
         'fullscreen','insertdatetime','media','table','help','wordcount'
         ],
         toolbar: 'codeeditor | undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
-        'bullist numlist checklist outdent indent | removeformat | code table help'
+        'bullist numlist checklist outdent indent | removeformat | code table help',
+        content_css: 'http://141.164.57.30:4000/assets/css/theme.css, http://141.164.57.30:4000/assets/css/theme-custom.css'
       });
       
       //달력
       $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-      $('#posting_date, #audit_start').datepicker({
+        $('#posting_date, #audit_start').datepicker({
       });
 
       $('#audit_start').change(function(){
