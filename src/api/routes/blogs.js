@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const multer = require('multer');
-const sharp = require('sharp');
+const Jimp = require('jimp');
 const fs = require('fs');
 const moment = require('moment');
 
@@ -74,9 +74,22 @@ router.post('/attach', upload.single('file'), async (req, res, next) => {
   console.log()
   if(req.file.mimetype.indexOf('image')>-1){
     for(let i=0;i<resizeWidth.length;i++){
+      Jimp.read(req.file.path)
+      .then(image => {
+        return image
+        .resize(resizeWidth[i], Jimp.AUTO) // resize
+        .quality(100) // set JPEG quality
+        //greyscale() // set greyscale
+        .write(req.file.destination+fileName+'-w'+resizeWidth[i]+fileType); // save
+      })
+      .catch(err => {
+        console.log(err);
+      });
+      /*
       sharp(req.file.path)
       .resize(resizeWidth[i])
       .toFile(req.file.destination+fileName+'-w'+resizeWidth[i]+fileType, (err, info) => {});
+      */
     }
   }
   await controllers.blogs.uploadAttachFiles(req, res);
