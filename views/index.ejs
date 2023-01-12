@@ -9,7 +9,7 @@
 
   <title>GA 포털 통합관리자</title>
   <link rel="shortcut icon" href="/assets/favicon.ico">
-  <%- include layout/head.ejs %>
+  <%- include('./layout/head') %>
 </head>
 <body>
   <div class="page-loader">
@@ -21,17 +21,17 @@
     <!-- Layout inner -->
     <div class="layout-inner">
 
-      <%- include layout/navbar_header.ejs %>
+      <%- include('./layout/navbar_header') %>
 
       <div class="layout-container">
 
-        <%- include layout/navbar_side.ejs %>
+        <%- include('./layout/navbar_side') %>
 
         <div class="layout-content">
 
-          <%- include('pages'+req._parsedUrl.pathname) %>
+          <%- include('./pages'+req._parsedUrl.pathname) %>
 
-          <%- include layout/footer.ejs %>
+          <%- include('./layout/footer') %>
 
         </div>
       </div>
