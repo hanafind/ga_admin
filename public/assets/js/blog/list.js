@@ -1,5 +1,5 @@
 let posts_page = 1;
-let posts_row = 5;
+let posts_row = 10;
 
 $(document).ready(function(){
     init();
