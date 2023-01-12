@@ -25,6 +25,7 @@ $(function(){
       //심사필 년
       $('#audit_year').append(
         `
+        <option value="${moment().add(1, 'y').format('YYYY')}">${moment().add(-1, 'y').format('YYYY')}</option>
           <option value="${moment().format('YYYY')}">${moment().format('YYYY')}</option>
           <option value="${moment().add(1, 'y').format('YYYY')}">${moment().add(1, 'y').format('YYYY')}</option>
         `
