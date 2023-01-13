@@ -22,6 +22,7 @@ module.exports = async (req, res)=>{
         let idx = req.body.idx;
         let post_categories_idx = req.body.post_categories_idx;
         let cover_video_url = req.body.cover_video_url;
+        let cover_type = req.body.cover_type;
 
         let filePath = cover_image_url.substr(0, cover_image_url.lastIndexOf('/')+1);
         let fileName = cover_image_url.substring(cover_image_url.lastIndexOf('/')+1, cover_image_url.lastIndexOf('.'));
@@ -62,7 +63,8 @@ module.exports = async (req, res)=>{
             url_slug,//16
             cover_video_url, //17
             cover_image_urls,//18
-            idx//19
+            cover_type,//19
+            idx//20
         ];
         await db.blogs.updatePost(req, res);
 
