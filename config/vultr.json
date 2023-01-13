@@ -7,7 +7,7 @@
     },
     "blog": {
         "name": "하나공감",
-        "upload_path" : ":/workspace/uploads"
+        "upload_path" : "/workspace/uploads"
     },
     "postgresql": {
         "host": "141.164.57.30",
