@@ -23,8 +23,9 @@ module.exports = async (req, res)=>{
             url_slug = $16,
             cover_video_url = $17,
             cover_image_urls = $18,
+            cover_type = $19,
             updated_at = now()
-        WHERE idx = $19
+        WHERE idx = $20
         returning *;
         `;
         
