@@ -40,7 +40,7 @@ $(function(){
       );
 
       //심사필 월
-      $(`#audit_month > option[value="${moment().format('M')}"]`).attr('selected', true);
+      $(`#audit_month > option[value="${moment().format('MM')}"]`).attr('selected', true);
 
       //카테고리 설정
       requestAPI({
