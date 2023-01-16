@@ -150,6 +150,7 @@ let getPost = ()=>{
             $(`input[name='cover_type'][value="${data.cover_type}"`).prop("checked", true);
             $('#cover_image').attr('src', data.cover_image_url);
             $('#cover_image_url').val(data.cover_image_url);
+            $('#cover_image_desc').val(data.cover_image_desc);
             $('#cover_video_url').val(data.cover_video_url);
             $('#cover_video').attr('src', data.cover_video_url);
             $('#post_title').val(data.title);
@@ -192,6 +193,7 @@ let updatePost = ()=>{
         audit_grant_end_date: $('#audit_end').val(),
         cover_type: $(":input:radio[name=cover_type]:checked").val(),
         cover_image_url: $('#cover_image_url').val(),
+        cover_image_desc: $('#cover_image_desc').val(),
         cover_video_url: $('#cover_video_url').val(),
         posting_date: $('#posting_date').val(),
         is_audit: $('#is_audit').is(':checked'),
@@ -207,6 +209,11 @@ let updatePost = ()=>{
 
     if($('#cover_image').attr('src')==''){
         alert('커버 이미지를 업로드해주세요.');
+        return;
+    }
+
+    if(!data.cover_image_desc){
+        alert('커버 이미지 설명을 입력해주세요.');
         return;
     }
 

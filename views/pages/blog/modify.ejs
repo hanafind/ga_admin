@@ -22,15 +22,15 @@
                   <div class="card-body">
                     <form id="form_post" method="post" enctype="multipart/form-data">
                       <div class="form-group">
-                        <div class="text-light small font-weight-semibold mb-3">카테고리 <code>*</code></div>
+                        <div class="small font-weight-semibold mb-3">카테고리 <code>*</code></div>
                         <div class="category-area"></div>
                       </div>
                       <div class="form-group">
-                        <div class="text-light small font-weight-semibold mb-3">제목 <code>*</code></div>
+                        <div class="small font-weight-semibold mb-3">제목 <code>*</code></div>
                         <input type="text" id="post_title" class="form-control" placeholder="제목을 입력하세요.">
                       </div>
                       <div class="form-group">
-                        <div class="text-light small font-weight-semibold mb-3">커버 미디어<code>*</code></div>
+                        <div class="small font-weight-semibold mb-3">커버 미디어<code>*</code></div>
                         <div class="row">
                           <div class="col">
                             <label class="form-check form-check-inline">
@@ -49,7 +49,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">커버 이미지 <code>*</code></div>
+                          <div class="small font-weight-semibold mb-3">커버 이미지 <code>*</code></div>
                           <div class="row">
                             <div class="col">
                               <div id="cover_image_upload" class="dropzone"></div>
@@ -61,7 +61,11 @@
                           <small class="form-text text-muted">.</small>
                       </div>
                       <div class="form-group">
-                        <div class="text-light small font-weight-semibold mb-3">커버 비디오</div>
+                        <div class="small font-weight-semibold mb-3">커버 이미지 설명<code>*</code></div>
+                        <input type="text" id="cover_image_desc" class="form-control" placeholder="커버 이미지 설명을 입력하세요.">
+                      </div>
+                      <div class="form-group">
+                        <div class="small font-weight-semibold mb-3">커버 비디오</div>
                           <div class="row">
                             <div class="col">
                               <div id="cover_video_upload" class="dropzone">
@@ -76,11 +80,11 @@
                           <small class="form-text text-muted">.</small>
                       </div>
                       <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">내용 <code>*</code></div>
+                          <div class="small font-weight-semibold mb-3">내용 <code>*</code></div>
                           <textarea id="html_editor"></textarea>
                       </div>
                       <div class="form-group">
-                        <div class="text-light small font-weight-semibold mb-3">본문 이미지</div>
+                        <div class="small font-weight-semibold mb-3">본문 이미지</div>
                         <div id="contetns_image" class="dropzone"></div>
                         <small class="form-text text-muted">본문에 이미지를 자동으로 삽입합니다.</small>
                       </div>
@@ -97,7 +101,7 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col mb-6">
-                            <div class="text-light small font-weight-semibold mb-3">공개 설정</div>
+                            <div class="small font-weight-semibold mb-3">공개 설정</div>
                             <label class="switcher">
                               <input id="post_visible" type="checkbox" class="switcher-input">
                               <span class="switcher-indicator">
@@ -111,18 +115,18 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col mb-6">
-                            <div class="text-light small font-weight-semibold mb-3">URL 슬러그 <code>*</code></div>
+                            <div class="small font-weight-semibold mb-3">URL 슬러그 <code>*</code></div>
                             <input type="text" class="form-control" id="url_slug">
                         </div>
                       </div>
                     </div>
                       <div class="row">
                         <div class="col mb-6">
-                          <div class="text-light small font-weight-semibold mb-3">발행일시 <code>*</code></div>
+                          <div class="small font-weight-semibold mb-3">발행일시 <code>*</code></div>
                           <input type="text" class="form-control" id="posting_date">
                         </div>
                         <div class="col mb-6">
-                          <div class="text-light small font-weight-semibold mb-3">&nbsp;</div>
+                          <div class="small font-weight-semibold mb-3">&nbsp;</div>
                           <div class="row">
                               <div class="col mb-6">
                                 <select id="posting_hour" class="form-control">
@@ -150,15 +154,15 @@
                     </h6>
                     <div class="card-body">
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">Title</div>
+                            <div class="small font-weight-semibold mb-3">Title</div>
                             <input id="meta_title" type="text" class="form-control" placeholder="제목을 입력하세요.">
                         </div>
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">Description</div>
+                            <div class="small font-weight-semibold mb-3">Description</div>
                             <textarea id="meta_desc" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">Keyword</div>
+                            <div class="small font-weight-semibold mb-3">Keyword</div>
                             <input id="meta_keyword" type="text" class="form-control" placeholder="키워드를 입력하세요.">
                         </div>
                     </div>
@@ -168,7 +172,7 @@
                     </h6>
                     <div class="card-body">
                         <div class="form-group">
-                          <div class="text-light small font-weight-semibold mb-3">심사필 노출</div>
+                          <div class="small font-weight-semibold mb-3">심사필 노출</div>
                           <label class="switcher">
                             <input id="is_audit" type="checkbox" class="switcher-input">
                             <span class="switcher-indicator">
@@ -178,7 +182,7 @@
                           </label>
                         </div>
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">심사필 번호</div>
+                            <div class="small font-weight-semibold mb-3">심사필 번호</div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <select id="audit_year" class="form-control">
@@ -209,11 +213,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">부여일</div>
+                            <div class="small font-weight-semibold mb-3">부여일</div>
                             <input type="text" class="form-control" id="audit_start">
                         </div>
                         <div class="form-group">
-                            <div class="text-light small font-weight-semibold mb-3">만료일</div>
+                            <div class="small font-weight-semibold mb-3">만료일</div>
                             <input type="text" class="form-control" placeholder="" disabled  id="audit_end">
                         </div>
                     </div>
