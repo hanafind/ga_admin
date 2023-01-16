@@ -40,9 +40,11 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     //url 슬러그 설정
+    /*
     $("#post_title").keyup(function() {
         $('#url_slug').val(urlSlug.set($(this).val()));
     });
+    */
 
     //커버 이미지 업로드
     $("div#cover_image_upload").dropzone({
@@ -231,6 +233,11 @@ let updatePost = ()=>{
       return;
     }
     data.posting_date = data.posting_date+ 'T' + posting_hour+':'+posting_minute;
+
+    if(!url_slug){
+        alert('URL 슬러그를 입력해주세요.');
+        return;
+      }
 
     requestAPI({
         method: 'put',
