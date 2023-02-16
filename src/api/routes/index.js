@@ -9,6 +9,7 @@ router.use((req, res, next) => {
 })
 
 router.use('/blogs', require('./blogs'));
+router.use('/products_direct', require('./products_direct'));
 router.use('/auths', require('./auths'));
 router.use('/sitemap', require('./sitemap'));
 
@@ -18,9 +19,14 @@ router.get('/test', async (req, res, next) => {
   const $ = cheerio.load(response.data, null, false);
   let data = [];
   $('.table_type01 tbody tr').each((i, el)=>{
+    let total_cost = {};
+    total_cost.male = $(el).find('.total_cost').eq(0).text();
+    total_cost.female = $(el).find('.total_cost').eq(1).text();
+    let product_name = $(el).find('.prod p').text();
     data.push({
       company_name: $(el).find('.tag_bizdiv').text(),
-      total_cost: {male: $(el).find('.total_cost').eq(0).text(), female: $(el).find('.total_cost').eq(1).text()}
+      product_name: product_name,
+      total_cost: {male: total_cost.male.split('\n').join('').split('\t').join(''), female: total_cost.female.split('\n').join('').split('\t').join('')}
     });
   });
   res.json(data);

@@ -1,0 +1,59 @@
+<!-- Page content -->
+<div class="container-fluid flex-grow-1 container-p-y">
+    <h4 class="font-weight-bold py-3 mb-4">
+        <span class="text-muted font-weight-light">보험상품(다이렉트) /</span> 등록
+    </h4>
+    <div class="text-right mt-3 mb-3">
+        <button type="button" class="btn btn-default" onclick="javascript:history.back();">취소</button>
+        <button id="btn_submit" type="button" class="btn btn-primary">저장</button>
+    </div>
+    <form>
+        <div class="row">
+            <div class="col">
+                <div class="card mb-4">
+                    <h6 class="card-header">
+                      상품정보
+                    </h6>
+                    <div class="card-body">
+                        <form id="form_post" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">공개 설정</div>
+                                <label class="switcher">
+                                    <input id="product_visible" type="checkbox" class="switcher-input">
+                                    <span class="switcher-indicator">
+                                    <span class="switcher-yes"></span>
+                                    <span class="switcher-no"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">카테고리 <code>*</code></div>
+                                <div class="category-area">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">보험사 <code>*</code></div>
+                                <select id="company_idx" class="form-control">                          
+                                    <option value="">선택</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">상품명 <code>*</code></div>
+                                <input type="text" id="product_name" class="form-control" placeholder="상품명을 입력하세요.">
+                            </div>
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">상품 설명</div>
+                                <input type="text" id="product_description" class="form-control" placeholder="상품 설명을 입력하세요.">
+                            </div>
+                            <div class="form-group">
+                                <div class="small font-weight-semibold mb-3">URL <code>*</code></div>
+                                <input type="text" id="product_url" class="form-control" placeholder="URL을 입력하세요.">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- / Page content -->

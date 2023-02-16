@@ -1,0 +1,42 @@
+<!-- Page content -->
+<div class="container-fluid flex-grow-1 container-p-y">
+    <h4 class="font-weight-bold py-3 mb-4">
+        <span class="text-muted font-weight-light">보험상품(다이렉트) /</span> 상품 목록
+    </h4>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="input-group mb-4">
+                <select id="category_idx" class="custom-select">
+                  <option value="">구분</option>
+                </select>
+                <select id="is_visible" class="custom-select">
+                    <option value="">공개 여부</option>
+                    <option value="true">공개</option>
+                    <option value="false">비공개</option>
+                </select>
+                <input id="keyword" type="text" class="form-control" placeholder="검색어를 입력해 주세요.">
+                <span class="input-group-append">
+                  <button id="btn_search" class="btn btn-secondary" type="button">검색</button>
+                </span>
+            </div>
+            <table id="list_tb" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>고유번호</th>
+                    <th>보험사</th>
+                    <th>구분</th>
+                    <th>상품명</th>
+                    <th>등록일</th>
+                    <th>공개여부</th>
+                  </tr>
+                </thead>
+                <tbody id="data-container">
+
+                </tbody>
+            </table>
+            <div class="pagination-container"></div>
+        </div>
+      </div>
+  </div>
+  <!-- / Page content -->

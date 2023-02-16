@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     // create generator
-    const generator = SitemapGenerator('http://141.164.57.30:4000/', {
+    const generator = SitemapGenerator(`${req.protocol}://${req.headers.host}/`, {
         stripQuerystring: false,
         lastMod: true,
         changeFreq: 'daily'
